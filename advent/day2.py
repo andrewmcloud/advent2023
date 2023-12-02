@@ -1,10 +1,10 @@
 import re
 
-with open("../input/day2_part1.txt", "r") as f:
-    input1 = f.read()
+with open("../input/day2.txt", "r") as f:
+    input_ = f.read()
 
 games = {}
-for i, game in enumerate(input1.split("\n"), 1):
+for i, game in enumerate(input_.split("\n"), 1):
     games[i] = {
         "red": [int(x) for x in re.findall(r"(\d+) red", game)],
         "green": [int(x) for x in re.findall(r"(\d+) green", game)],
@@ -28,4 +28,4 @@ part2 = sum(
     for game in games
 )
 
-print(f"day1: {part1}\nday2: {[part2]}")
+print(f"day2:\npart 1: {part1}\npart 2: {part2}")
