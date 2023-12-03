@@ -27,8 +27,6 @@ lookup = {
 total_p2 = 0
 for line in input_.split("\n"):
     numbers = re.findall(re.compile(pattern), line)
-    total_p2 += int(
-        lookup.get(numbers[0], numbers[0]) + lookup.get(numbers[-1], numbers[-1])
-    )
+    total_p2 += int(lookup.get(numbers[0], numbers[0]) + lookup.get(numbers[-1], numbers[-1]))
 
 print(f"day1:\npart 1: {total_p1}\npart 2: {total_p2}")

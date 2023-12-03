@@ -22,9 +22,7 @@ part1 = sum(
 )
 
 part2 = sum(
-    max(games[game]["red"], default=0)
-    * max(games[game]["green"], default=0)
-    * max(games[game]["blue"], default=0)
+    max(games[game]["red"], default=0) * max(games[game]["green"], default=0) * max(games[game]["blue"], default=0)
     for game in games
 )
 
