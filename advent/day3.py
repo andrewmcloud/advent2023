@@ -24,14 +24,14 @@ matrix = [[i for i in line] for line in input_.split("\n")]
 row_len = len(matrix[0])
 cleaned_input = input_.replace("\n", "")
 index_num_tuple = [(m.start(), m.group(0)) for m in re.finditer(r"\d+", cleaned_input)]
-index_gear_tuple = [(m.start(), m.group(0)) for m in re.finditer(r"\*", cleaned_input)]
-index_symbol_tuple = [(m.start(), m.group(0)) for m in re.finditer(r"[\*\+\$\#\!\@()%^&\-+=\/]", cleaned_input)]
+gear_indexes = [m.start() for m in re.finditer(r"\*", cleaned_input)]
+symbol_indexes = [m.start() for m in re.finditer(r"[\*\+\$\#\!\@()%^&\-+=\/]", cleaned_input)]
 
 index_map = {t[0] + j: t[1] for t in index_num_tuple for j in range(len(t[1]))}
-part1 = sum(sum(get_adjacent_numbers(symbol[0], index_map, row_len)) for symbol in index_symbol_tuple)
+part1 = sum(sum(get_adjacent_numbers(idx, index_map, row_len)) for idx in symbol_indexes)
 part2 = 0
-for gear in index_gear_tuple:
-    nums = get_adjacent_numbers(gear[0], index_map, row_len)
+for gear in gear_indexes:
+    nums = get_adjacent_numbers(gear, index_map, row_len)
     part2 += math.prod(nums) if len(nums) == 2 else 0
 
 
