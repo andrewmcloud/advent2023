@@ -28,11 +28,12 @@ gear_indexes = [m.start() for m in re.finditer(r"\*", cleaned_input)]
 symbol_indexes = [m.start() for m in re.finditer(r"[\*\+\$\#\!\@()%^&\-+=\/]", cleaned_input)]
 
 index_map = {t[0] + j: t[1] for t in index_num_tuple for j in range(len(t[1]))}
+
 part1 = sum(sum(get_adjacent_numbers(idx, index_map, row_len)) for idx in symbol_indexes)
+
 part2 = 0
 for gear in gear_indexes:
     nums = get_adjacent_numbers(gear, index_map, row_len)
     part2 += math.prod(nums) if len(nums) == 2 else 0
-
 
 print(f"day2:\npart 1: {part1}\npart 2: {part2}")

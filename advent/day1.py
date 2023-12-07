@@ -9,7 +9,6 @@ for line in input_.split("\n"):
     numbers = re.findall(r"\d", line)
     total_p1 += int(numbers[0] + numbers[-1])
 
-
 # part 2
 pattern = r"(?=(one|two|three|four|five|six|seven|eight|nine|\d))"
 lookup = {
