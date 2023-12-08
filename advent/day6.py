@@ -20,10 +20,10 @@ def solve_quadratic(a: int, b: int, c: int) -> int:
     # ax²+bx + c = 0
     # b±√(b²-4ac))/(2a)
     d = b**2 - (4 * a * c)
-    lower_bounds = math.ceil(-b + (math.sqrt(d) / (2 * a)))
-    upper_bounds = math.floor(-b - (math.sqrt(d) / (2 * a)))
+    lower_bounds = math.floor(b - (math.sqrt(d) / (2 * a)))
+    upper_bounds = math.ceil(b + (math.sqrt(d) / (2 * a)))
 
-    return abs(upper_bounds - lower_bounds)
+    return upper_bounds - lower_bounds
 
 
 part1 = math.prod(find_winning_holds(times[i], distances[i]) for i in range(len(times)))
